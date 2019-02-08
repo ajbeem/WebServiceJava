@@ -1,0 +1,37 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from ImpLoginService WSDL service -->
+
+  <service name="ImpLogin" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://servicio.bean.ws.pcentaury.com"/>
+      <parameter name="wsdlServiceElement" value="ImpLoginService"/>
+      <parameter name="schemaQualified" value="http://servicio.bean.ws.pcentaury.com,http://bean.ws.pcentaury.com"/>
+      <parameter name="wsdlServicePort" value="ImpLogin"/>
+      <parameter name="className" value="com.pcentaury.ws.bean.servicio.ImpLoginSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="ImpLogin"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="autenticar" qname="operNS:autenticar" xmlns:operNS="http://servicio.bean.ws.pcentaury.com" returnQName="retNS:autenticarReturn" xmlns:retNS="http://servicio.bean.ws.pcentaury.com" returnType="rtns:BLogin" xmlns:rtns="http://bean.ws.pcentaury.com" soapAction="" >
+        <parameter qname="pns:objRecibido" xmlns:pns="http://servicio.bean.ws.pcentaury.com" type="tns:BLogin" xmlns:tns="http://bean.ws.pcentaury.com"/>
+      </operation>
+      <parameter name="allowedMethods" value="autenticar"/>
+
+      <typeMapping
+        xmlns:ns="http://bean.ws.pcentaury.com"
+        qname="ns:BLogin"
+        type="java:com.pcentaury.ws.bean.BLogin"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+</deployment>

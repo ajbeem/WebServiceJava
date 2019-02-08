@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://servicio.bean.ws.pcentaury.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://servicio.bean.ws.pcentaury.com" xmlns:intf="http://servicio.bean.ws.pcentaury.com" xmlns:tns1="http://bean.ws.pcentaury.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://servicio.bean.ws.pcentaury.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://bean.ws.pcentaury.com"/>
+   <element name="autenticar">
+    <complexType>
+     <sequence>
+      <element name="objRecibido" type="tns1:BLogin"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="autenticarResponse">
+    <complexType>
+     <sequence>
+      <element name="autenticarReturn" type="tns1:BLogin"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://bean.ws.pcentaury.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <complexType name="BLogin">
+    <sequence>
+     <element name="acceso" nillable="true" type="xsd:boolean"/>
+     <element name="mensaje" nillable="true" type="xsd:string"/>
+     <element name="password" nillable="true" type="xsd:string"/>
+     <element name="usuario" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="autenticarRequest">
+
+      <wsdl:part element="impl:autenticar" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="autenticarResponse">
+
+      <wsdl:part element="impl:autenticarResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="ImpLogin">
+
+      <wsdl:operation name="autenticar">
+
+         <wsdl:input message="impl:autenticarRequest" name="autenticarRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:autenticarResponse" name="autenticarResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="ImpLoginSoapBinding" type="impl:ImpLogin">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="autenticar">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="autenticarRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="autenticarResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="ImpLoginService">
+
+      <wsdl:port binding="impl:ImpLoginSoapBinding" name="ImpLogin">
+
+         <wsdlsoap:address location="http://localhost:8083/wsAJM_V1.1/services/ImpLogin"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

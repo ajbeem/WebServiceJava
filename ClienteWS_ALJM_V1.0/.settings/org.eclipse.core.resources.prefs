@@ -1,0 +1,6 @@
+eclipse.preferences.version=1
+encoding//src/com/pcentaury/ws/bean/BLogin.java=UTF-8
+encoding//src/com/pcentaury/ws/bean/servicio/ImpLogin.java=UTF-8
+encoding//src/com/pcentaury/ws/bean/servicio/ImpLoginService.java=UTF-8
+encoding//src/com/pcentaury/ws/bean/servicio/ImpLoginServiceLocator.java=UTF-8
+encoding//src/com/pcentaury/ws/bean/servicio/ImpLoginSoapBindingStub.java=UTF-8
